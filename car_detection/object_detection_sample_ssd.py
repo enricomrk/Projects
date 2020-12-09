@@ -19,6 +19,7 @@ def build_argparser():
     args = parser.add_argument_group("Options")
     args.add_argument('-h', '--help', action='help', default=SUPPRESS, help='Show this help message and exit.')
     args.add_argument('-m', '--model', help='Path to the model .xml file', required=True, type=str)
+    args.add_argument('-t', '--tab_base', help='Name of the csv tab', required=True, type=str)
     args.add_argument('-i', '--input', help='Path to images directory', required=False, type=str)
     args.add_argument('-v', '--video', help='Path to video file', required=False, type=str)
     args.add_argument('-c', '--confidence', help='Minimum score to accept a detection', required=False, type=float, default=0.4)

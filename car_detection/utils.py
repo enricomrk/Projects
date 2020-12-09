@@ -1,6 +1,5 @@
 
 import os
-import numpy as np
 
 def multiple_append(listes, elements):
     # append different elements to different lists in the same time
