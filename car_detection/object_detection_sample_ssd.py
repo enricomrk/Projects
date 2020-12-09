@@ -3,7 +3,6 @@ import sys
 import glob
 from os import makedirs
 from os.path import basename, splitext, dirname, sep, getmtime
-from collections import defaultdict
 from argparse import ArgumentParser, SUPPRESS
 from math import floor, ceil
 import cv2
@@ -134,9 +133,9 @@ def main():
         if has_video:
             ret, image = cap.read()
             name = f'frame{count}'
-            if count % 10 == 0:
+            if count % 100 == 0:
                  print('Progress: %.2f%%' % (100.0 * count/video_length), end='\r', flush=True)
-                 if count % 100 == 0:
+                 if count % 1000 == 0:
                     log.info('Progress: %.2f%%' % (100.0 * count/video_length))
             if not ret:
                 break
@@ -217,7 +216,7 @@ def main():
 
     d = {'file': paths, 'object': objects, 'x1': x1, 'y1': y1, 'w': ws, 'h': hs, 'p': probas}
     tab = pd.DataFrame(data=d)
-    tab.to_csv(f"tab_{model_name}.csv", index_label='#')
+    tab.to_csv(args.tab_base, index_label='#')
 
     # -----------------------------------------------------------------------------------------------------
     if has_video:
